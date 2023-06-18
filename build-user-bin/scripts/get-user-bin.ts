@@ -4,6 +4,7 @@ import { cwd } from 'node:process'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { getFormatCode, getPackageManager } from '../../utils'
 import { $ } from 'execa'
+import consola from 'consola'
 
 interface PackageJson {
   dependencies: { [key: string]: string }
@@ -26,3 +27,8 @@ for (key in userPackageJson) {
 const binedPackagesJsonStr = await getFormatCode(JSON.stringify(buildUserBinPackageJson, null, 2), { parser: 'json' })
 writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
 const commandList = [$`${packageManager} install`, $`${packageManager} build`]
+
+for (const command of commandList) {
+  const { stdout } = await command
+  consola.info(stdout)
+}
