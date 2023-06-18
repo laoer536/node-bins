@@ -6,7 +6,6 @@ import { join } from 'pathe'
 import { cwd } from 'node:process'
 import consola from 'consola'
 import { getFormatCode } from '../utils'
-import { copyFileSync } from 'node:fs'
 import { readFileSync, writeFileSync } from 'node:fs'
 import { execaCommand } from 'execa'
 import { getPackageManager } from '../utils'
@@ -16,11 +15,8 @@ import { getPackageManager } from '../utils'
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(filename, '../../')
 const buildUserBinRoot = join(nodeBinRoot, './build-user-bin')
-const userBinPath = join(filename, '../../', './user-bin')
 const userRoot = cwd()
 const packageManager = getPackageManager()
-
-await execaCommand(`${packageManager} run build`, { execPath: buildUserBinRoot })
 
 const isInCommandFileDir = await consola.prompt('你在执行‘create-bin’命令时,是在源码文件所对应的文件夹下？', {
   type: 'confirm',
@@ -48,7 +44,9 @@ async function createBin() {
     type: 'text',
     placeholder: '请输入这个command对应的js文件路径',
   })
-  copyFileSync(join(userRoot, binFileName), userBinPath)
+  const binFileCode = readFileSync(`${userRoot}/${binFileName}`, 'utf-8')
+  writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
+  await execaCommand(`${packageManager} run build`, { execPath: buildUserBinRoot })
   const packageJson = JSON.parse(readFileSync(nodeBinRoot, 'utf-8'))
   packageJson.bin[binName] = `user-bin/` + binFileName
   const binedPackagesJsonStr = await getFormatCode(JSON.stringify(packageJson, null, 2), { parser: 'json' })
