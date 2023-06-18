@@ -2,8 +2,6 @@
   "name": "build-user-bin",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
   "scripts": {
     "build": "unbuild"
   },
