@@ -1,6 +1,6 @@
 {
   "name": "node-bins",
-  "version": "0.9.9",
+  "version": "1.0.0",
   "description": "Fast create  global commands by nodejs.",
   "type": "module",
   "author": "laoer536",
