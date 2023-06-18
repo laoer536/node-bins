@@ -42,7 +42,7 @@ async function createBin() {
   const binName = await consola.prompt('binName', { type: 'text', placeholder: '请输入您将创建的command名称' })
   const binFileName = await consola.prompt('binFile', {
     type: 'text',
-    placeholder: '请输入这个command对应的js文件路径',
+    placeholder: '请输入这个command对应的js文件名称（需要包含后缀，且为".js"或者".ts"）',
   })
   const binFileCode = readFileSync(`${userRoot}/${binFileName}`, 'utf-8')
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
