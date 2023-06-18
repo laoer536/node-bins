@@ -1,21 +1,27 @@
 #!/usr/bin/env node
-import minimist from 'minimist'
+// import minimist from 'minimist'
 import { red, lightGreen } from 'kolorist'
 import { fileURLToPath } from 'node:url'
 import { join } from 'pathe'
 import { cwd } from 'node:process'
 import consola from 'consola'
-import {getFormatCode} from '../utils'
+import { getFormatCode } from '../utils'
 import { copyFileSync } from 'node:fs'
 import { readFileSync, writeFileSync } from 'node:fs'
-const argv = minimist(process.argv.slice(2))
-console.log(argv)
+import { execaCommand } from 'execa'
+import { getPackageManager } from '../utils'
+// const argv = minimist(process.argv.slice(2))
+// console.log(argv)
+
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(filename, '../../')
+const buildUserBinRoot = join(nodeBinRoot, './build-user-bin')
 const userBinPath = join(filename, '../../', './user-bin')
 const userRoot = cwd()
+const packageManager = getPackageManager()
 
-console.log(join(nodeBinRoot, './package.json'))
+await execaCommand(`${packageManager} run build`, { execPath: buildUserBinRoot })
+
 const isInCommandFileDir = await consola.prompt('你在执行‘create-bin’命令时,是在源码文件所对应的文件夹下？', {
   type: 'confirm',
 })
@@ -38,11 +44,14 @@ if (isInCommandFileDir) {
 
 async function createBin() {
   const binName = await consola.prompt('binName', { type: 'text', placeholder: '请输入您将创建的command名称' })
-  const binFileName = await consola.prompt('binFile', { type: 'text', placeholder: '请输入这个command对应的js文件路径' })
+  const binFileName = await consola.prompt('binFile', {
+    type: 'text',
+    placeholder: '请输入这个command对应的js文件路径',
+  })
   copyFileSync(join(userRoot, binFileName), userBinPath)
   const packageJson = JSON.parse(readFileSync(nodeBinRoot, 'utf-8'))
   packageJson.bin[binName] = `user-bin/` + binFileName
   const binedPackagesJsonStr = await getFormatCode(JSON.stringify(packageJson, null, 2), { parser: 'json' })
   writeFileSync(join(nodeBinRoot, './package.json'), binedPackagesJsonStr)
-  return { binName,  }
+  return { binName }
 }

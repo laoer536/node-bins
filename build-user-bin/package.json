@@ -7,8 +7,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "jiti": "^1.18.2"
-  }
+  "license": "ISC"
 }

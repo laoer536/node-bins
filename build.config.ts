@@ -14,14 +14,6 @@ export default defineBuildConfig({
       input: './utils/',
       outDir: `${outDir}/utils`,
     },
-    {
-      input: './build-user-bin/scripts/',
-      outDir: `${outDir}/build-user-bin/scripts`,
-    },
-    {
-      input: './build-user-bin/src/',
-      outDir: `${outDir}/build-user-bin/src`,
-    },
   ],
   rollup: {
     esbuild: {

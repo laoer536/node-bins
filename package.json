@@ -5,14 +5,22 @@
   "type": "module",
   "scripts": {
     "build": "unbuild",
-    "build:user": "pnpm --filter build-user-bin run build"
+    "build:user": "pnpm --filter build-user-bin run build",
+    "test": "node test.js"
   },
-  "workspaces": ["build-user-bin/**"],
+  "workspaces": [
+    "build-user-bin/**"
+  ],
   "bin": {
     "create-bin": "dist/self-bin/create-bin.mjs",
     "force-push": "dist/user-bin/force-push.mjs"
   },
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "build-user-bin",
+    "!node_modules",
+    "!node_modules/**"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -23,7 +31,8 @@
     "minimist": "^1.2.8",
     "pathe": "^1.1.1",
     "prettier": "^2.8.8",
-    "unbuild": "^1.2.1"
+    "unbuild": "^1.2.1",
+    "jiti": "^1.18.2"
   },
   "devDependencies": {
     "@types/minimist": "^1.2.2",

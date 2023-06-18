@@ -10,7 +10,8 @@
     "self-bin/**/*.ts",
     "user-bin/**/*.ts",
     "utils/**/*.ts",
-    "build.config.ts"
+    "build.config.ts",
+    "build-user-bin/**/*.ts",
   ],
   "exclude": ["node_modules"]
 }
