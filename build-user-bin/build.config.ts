@@ -5,6 +5,7 @@ export default defineBuildConfig({
   outDir,
   clean: false,
   rollup: {
+    inlineDependencies: true,
     esbuild: {
       minify: true,
     },
