@@ -8,7 +8,8 @@
   "scripts": {
     "build": "unbuild",
     "build:user": "pnpm --filter build-user-bin run build",
-    "test": "node test.js"
+    "test": "node test.js",
+    "release": "pnpm build && standard-version && git push --follow-tags && pnpm publish"
   },
   "workspaces": [
     "build-user-bin/**"
@@ -33,17 +34,18 @@
   "dependencies": {
     "consola": "^3.1.0",
     "execa": "^7.1.1",
+    "jiti": "^1.18.2",
     "kolorist": "^1.8.0",
     "minimist": "^1.2.8",
     "pathe": "^1.1.1",
     "prettier": "^2.8.8",
-    "unbuild": "^1.2.1",
-    "jiti": "^1.18.2"
+    "unbuild": "^1.2.1"
   },
   "devDependencies": {
     "@types/minimist": "^1.2.2",
     "@types/node": "^20.3.1",
     "@types/prettier": "^2.7.3",
+    "standard-version": "^9.5.0",
     "typescript": "^5.1.3"
   }
 }
