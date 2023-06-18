@@ -1,8 +1,10 @@
 {
   "name": "node-bins",
   "version": "0.9.9",
-  "description": "",
+  "description": "Fast create  global commands by nodejs.",
   "type": "module",
+  "author": "laoer536",
+  "repository": "git@github.com:laoer536/node-bins.git",
   "scripts": {
     "build": "unbuild",
     "build:user": "pnpm --filter build-user-bin run build",
@@ -21,8 +23,12 @@
     "!node_modules",
     "!node_modules/**"
   ],
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "node-bins",
+    "bin",
+    "global command",
+    "node command"
+  ],
   "license": "ISC",
   "dependencies": {
     "consola": "^3.1.0",
