@@ -1,0 +1,33 @@
+{
+  "name": "node-bins",
+  "version": "0.9.9",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "build": "unbuild"
+  },
+  "workspaces": ["build-user-bin/**"],
+  "bin": {
+    "create-bin": "dist/self-bin/create-bin.mjs",
+    "force-push": "dist/user-bin/force-push.mjs"
+  },
+  "files": ["dist"],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "consola": "^3.1.0",
+    "execa": "^7.1.1",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "pathe": "^1.1.1",
+    "prettier": "^2.8.8",
+    "unbuild": "^1.2.1"
+  },
+  "devDependencies": {
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^20.3.1",
+    "@types/prettier": "^2.7.3",
+    "typescript": "^5.1.3"
+  }
+}
