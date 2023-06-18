@@ -9,6 +9,7 @@ import consola from 'consola'
 interface PackageJson {
   dependencies: { [key: string]: string }
   devDependencies: { [key: string]: string }
+  [key: string]: string | { [key: string]: string }
 }
 
 const filename = fileURLToPath(import.meta.url)
@@ -18,9 +19,12 @@ const packageManager = getPackageManager()
 
 const userPackageJson = JSON.parse(readFileSync(`${userRoot}/package.json`, 'utf-8')) as PackageJson
 const buildUserBinPackageJson = JSON.parse(readFileSync(`${buildUserBinRoot}/package.json`, 'utf-8')) as PackageJson
-let key: keyof PackageJson
-for (key in userPackageJson) {
-  for (const dependencie in userPackageJson[key]) {
+const { dependencies = {}, devDependencies = {} } = userPackageJson
+const userDependencies = { dependencies, devDependencies }
+
+let key: keyof typeof userDependencies
+for (key in userDependencies) {
+  for (const dependencie in userDependencies[key]) {
     buildUserBinPackageJson[key][dependencie] = dependencie
   }
 }
