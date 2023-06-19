@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/laoer536/node-bins/compare/v1.1.6...v1.1.7) (2023-06-19)
+
+
+### Bug Fixes
+
+* fix node-bin-root path ([b2931a1](https://github.com/laoer536/node-bins/commit/b2931a167304452d989781c38ac51b87b666d75a))
+
 ### [1.1.6](https://github.com/laoer536/node-bins/compare/v1.1.5...v1.1.6) (2023-06-19)
 
 
