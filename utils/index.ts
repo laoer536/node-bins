@@ -11,9 +11,9 @@ export async function getFormatCode(code: string, prettierConfig: Config) {
   }
 }
 
-export function getPackageManager(npm_execpath = process.env.npm_execpath || 'pnpm') {
+export function getPackageManager(npm_execpath = process.env.npm_execpath || 'npm') {
   const packageManagerList: ['yarn', 'pnpm', 'npm'] = ['yarn', 'pnpm', 'npm']
-  let userPackageManager: 'yarn' | 'pnpm' | 'npm' = 'pnpm'
+  let userPackageManager: 'yarn' | 'pnpm' | 'npm' = 'npm'
   for (const packageManager of packageManagerList) {
     if (npm_execpath.includes(packageManager)) {
       userPackageManager = packageManager

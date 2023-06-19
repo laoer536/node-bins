@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "jiti scripts/get-user-bin.ts"
+    "build": "npm run package:build",
+    "package:build": "jiti scripts/get-user-bin.ts"
   },
   "keywords": [],
   "author": "",
