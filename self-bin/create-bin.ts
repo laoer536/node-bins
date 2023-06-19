@@ -57,5 +57,9 @@ async function createBin() {
   packageJson.bin[binName] = `dist/user-bin/` + binFileName
   const binedPackagesJsonStr = await getFormatCode(JSON.stringify(packageJson, null, 2), { parser: 'json' })
   writeFileSync(join(nodeBinRoot, '../package.json'), binedPackagesJsonStr)
+
+  /** link bin **/
+  const { stdout: linkStdout } = await execaCommand(`npm link`, { cwd: nodeBinRoot })
+  console.log(linkStdout)
   return { binName }
 }
