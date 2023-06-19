@@ -42,24 +42,15 @@ async function writeUserpackagejsonIn() {
 
 async function run() {
   await writeUserpackagejsonIn()
-  const commandList = [
-    {
-      command: () => execaCommand(`${packageManager} install`, { cwd: buildUserBinRoot }),
-      info: '开始下载你源码需要用到的依赖项...',
-    },
-    {
-      command: () => execaCommand(`${packageManager} unbuild`, { cwd: buildUserBinRoot }),
-      info: '开始build你的nodejs源码...',
-    },
-  ]
-  for (const command of commandList) {
-    await command.command()
-    consola.info(command.info)
-  }
+  const { stdout } = await execaCommand(`${packageManager} run install && ${packageManager} run build`, {
+    cwd: buildUserBinRoot,
+  })
+  return stdout
 }
 
 run()
-  .then(() => {
+  .then((stdout) => {
+    console.log(stdout)
     consola.success('你的命令源码打包完成！')
   })
   .catch((err) => {
