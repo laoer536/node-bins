@@ -43,6 +43,7 @@ async function createBin() {
     type: 'text',
     placeholder: '请输入这个command对应的js文件名称（需要包含后缀，且为".js"或者".ts"）',
   })
+  consola.info('开始根据你的源码文件，创建全局命令....')
 
   /** build user bin's code **/
   const binFileCode = readFileSync(`${userRoot}/${binFileName}`, 'utf-8')
