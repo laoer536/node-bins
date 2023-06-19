@@ -9,14 +9,25 @@
     "build:user": "pnpm --filter build-user-bin run build",
     "release": "pnpm build && standard-version && git push --follow-tags && pnpm publish"
   },
-  "workspaces": ["build-user-bin/**"],
+  "workspaces": [
+    "build-user-bin/**"
+  ],
   "bin": {
     "create-bin": "dist/self-bin/create-bin.mjs",
-    "force-push": "dist/user-bin/force-push.mjs",
-    "test-node-bin": "dist/user-bin/test-node-bin.js"
+    "force-push": "dist/user-bin/force-push.mjs"
   },
-  "files": ["dist", "build-user-bin", "!node_modules", "!node_modules/**"],
-  "keywords": ["node-bins", "bin", "global command", "node command"],
+  "files": [
+    "dist",
+    "build-user-bin",
+    "!node_modules",
+    "!node_modules/**"
+  ],
+  "keywords": [
+    "node-bins",
+    "bin",
+    "global command",
+    "node command"
+  ],
   "license": "ISC",
   "dependencies": {
     "consola": "^3.1.0",
