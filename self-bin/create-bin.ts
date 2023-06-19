@@ -10,9 +10,9 @@ import { execaCommand } from 'execa'
 import { getPackageManager, getFormatCode } from '../utils'
 
 const filename = fileURLToPath(import.meta.url)
-const nodeBinRoot = join(filename, '../../')
-const buildUserBinRoot = join(nodeBinRoot, '../build-user-bin')
-const userBinRoot = join(nodeBinRoot, './user-bin')
+const nodeBinRoot = join(filename, '../../../')
+const buildUserBinRoot = join(nodeBinRoot, './build-user-bin')
+const userBinRoot = join(nodeBinRoot, './dist/user-bin')
 const userRoot = cwd()
 const packageManager = getPackageManager()
 
@@ -53,10 +53,10 @@ async function createBin() {
   renameSync(`${userBinRoot}/index.mjs`, `${userBinRoot}/${binFileName}`)
 
   /** create user's bin **/
-  const packageJson = JSON.parse(readFileSync(join(nodeBinRoot, '../package.json'), 'utf-8'))
+  const packageJson = JSON.parse(readFileSync(join(nodeBinRoot, './package.json'), 'utf-8'))
   packageJson.bin[binName] = `dist/user-bin/` + binFileName
   const binedPackagesJsonStr = await getFormatCode(JSON.stringify(packageJson, null, 2), { parser: 'json' })
-  writeFileSync(join(nodeBinRoot, '../package.json'), binedPackagesJsonStr)
+  writeFileSync(join(nodeBinRoot, './package.json'), binedPackagesJsonStr)
 
   /** link bin **/
   const { stdout: linkStdout } = await execaCommand(`npm link`, { cwd: nodeBinRoot })
