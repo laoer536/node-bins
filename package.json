@@ -2,34 +2,21 @@
   "name": "node-bins",
   "version": "1.1.0",
   "description": "Fast create  global commands by nodejs.",
-  "type": "module",
   "author": "laoer536",
   "repository": "git@github.com:laoer536/node-bins.git",
   "scripts": {
     "build": "unbuild",
     "build:user": "pnpm --filter build-user-bin run build",
-    "test": "node test.js",
     "release": "pnpm build && standard-version && git push --follow-tags && pnpm publish"
   },
-  "workspaces": [
-    "build-user-bin/**"
-  ],
+  "workspaces": ["build-user-bin/**"],
   "bin": {
     "create-bin": "dist/self-bin/create-bin.mjs",
-    "force-push": "dist/user-bin/force-push.mjs"
+    "force-push": "dist/user-bin/force-push.mjs",
+    "test-node-bin": "dist/user-bin/test-node-bin.js"
   },
-  "files": [
-    "dist",
-    "build-user-bin",
-    "!node_modules",
-    "!node_modules/**"
-  ],
-  "keywords": [
-    "node-bins",
-    "bin",
-    "global command",
-    "node command"
-  ],
+  "files": ["dist", "build-user-bin", "!node_modules", "!node_modules/**"],
+  "keywords": ["node-bins", "bin", "global command", "node command"],
   "license": "ISC",
   "dependencies": {
     "consola": "^3.1.0",

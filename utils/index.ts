@@ -1,6 +1,7 @@
-import { format, resolveConfig } from 'prettier'
+import prettier from 'prettier'
 import type { Config } from 'prettier'
 
+const { format, resolveConfig } = prettier
 export async function getFormatCode(code: string, prettierConfig: Config) {
   if (prettierConfig) {
     return format(code, prettierConfig)
@@ -10,19 +11,14 @@ export async function getFormatCode(code: string, prettierConfig: Config) {
   }
 }
 
-export function getPackageManager(npm_execpath = process.env.npm_execpath) {
-  if (!npm_execpath) {
-    throw `Should use 'yarn' or 'pnpm' or 'npm' to run.`
-  }
+export function getPackageManager(npm_execpath = process.env.npm_execpath || 'pnpm') {
   const packageManagerList: ['yarn', 'pnpm', 'npm'] = ['yarn', 'pnpm', 'npm']
-  let userPackageManager: 'yarn' | 'pnpm' | 'npm' | undefined
+  let userPackageManager: 'yarn' | 'pnpm' | 'npm' = 'pnpm'
   for (const packageManager of packageManagerList) {
     if (npm_execpath.includes(packageManager)) {
       userPackageManager = packageManager
+      break
     }
-  }
-  if (!userPackageManager) {
-    throw `Can't find this packageManager. Should use 'yarn' or 'pnpm' or 'npm' to run.`
   }
   return userPackageManager
 }

@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-console.log('22222')
+console.log('test-node-bins-ssssss63754763')
