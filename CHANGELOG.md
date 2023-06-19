@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/laoer536/node-bins/compare/v1.1.0...v1.1.1) (2023-06-19)
+
+
+### Bug Fixes
+
+* bugs ([708bb9c](https://github.com/laoer536/node-bins/commit/708bb9c538cc0a31ab1831921b3557a4c70f4bff))
+* dependencies fix ([7b52c85](https://github.com/laoer536/node-bins/commit/7b52c855ba8c1db19fcf8c38daa737293b75c3b7))
+* PackageManager use npm ([20c3794](https://github.com/laoer536/node-bins/commit/20c3794d9914f43db9d6361d3d0d4e5706bf10c8))
+* PackageManager use npm ([8b44715](https://github.com/laoer536/node-bins/commit/8b44715bb79a568063e2505e9273bdd24af77ba2))
+* tip update ([805b834](https://github.com/laoer536/node-bins/commit/805b83493d37c8060ba9fdb366bb2b5285bbc288))
+* userDependencies get ([52a5519](https://github.com/laoer536/node-bins/commit/52a5519b1e007d830e1de0f2a04ef8a8c37a9ee6))
+
 ## 1.1.0 (2023-06-18)
 
 
