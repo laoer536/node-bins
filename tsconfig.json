@@ -4,14 +4,15 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "esModuleInterop": true,
-    "strict": true,
+    "strict": true
   },
   "include": [
     "self-bin/**/*.ts",
     "user-bin/**/*.ts",
     "utils/**/*.ts",
+    "scripts/**/*.ts",
     "build.config.ts",
-    "build-user-bin/**/*.ts",
+    "build-user-bin/**/*.ts"
   ],
   "exclude": ["node_modules"]
 }

@@ -7,7 +7,7 @@
   "scripts": {
     "build": "unbuild",
     "build:user": "pnpm --filter build-user-bin run build",
-    "release": "pnpm build && standard-version && git push --follow-tags && pnpm publish"
+    "release": "pnpm build && jiti scripts/fix-utils-path.ts && standard-version && git push --follow-tags && pnpm publish"
   },
   "workspaces": [
     "build-user-bin/**"
