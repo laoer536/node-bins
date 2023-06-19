@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.4](https://github.com/laoer536/node-bins/compare/v1.1.3...v1.1.4) (2023-06-19)
+
+
+### Bug Fixes
+
+* create fail ([170142f](https://github.com/laoer536/node-bins/commit/170142fbdc7f910e09ea75c53c9497cab2557058))
+* create fail ([e3c5c05](https://github.com/laoer536/node-bins/commit/e3c5c05fe1530785786bcbf2ecf11daf1b221cda))
+
 ### [1.1.3](https://github.com/laoer536/node-bins/compare/v1.1.2...v1.1.3) (2023-06-19)
 
 
