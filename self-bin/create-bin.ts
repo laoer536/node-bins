@@ -59,7 +59,7 @@ async function createBin() {
   writeFileSync(join(nodeBinRoot, './package.json'), binedPackagesJsonStr)
 
   /** link bin **/
-  const { stdout: linkStdout } = await execaCommand(`npm link`, { execPath: '../../' })
+  const { stdout: linkStdout } = await execaCommand(`npm link --global`, { execPath: '../../' })
   console.log(linkStdout)
   return { binName }
 }
