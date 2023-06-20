@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/laoer536/node-bins/compare/v1.1.23...v2.1.0) (2023-06-20)
+
+
+### Features
+
+* version 2.0.0 is ok ([e6b9e4d](https://github.com/laoer536/node-bins/commit/e6b9e4de545322c61f57d80b47e847b5e363281e))
+
 ### [1.1.23](https://github.com/laoer536/node-bins/compare/v1.1.22...v1.1.23) (2023-06-20)
 
 
