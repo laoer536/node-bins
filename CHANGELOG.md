@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.2.0](https://github.com/laoer536/node-bins/compare/v2.1.0...v2.2.0) (2023-06-20)
+
+
+### Features
+
+* change language english ([8285eb7](https://github.com/laoer536/node-bins/commit/8285eb79f2ecf60e3d5bac5538f82245dd79201c))
+* update README.md ([06037a2](https://github.com/laoer536/node-bins/commit/06037a274b89b9055bd62b9a4513aadb88c9aa76))
+
 ## [2.1.0](https://github.com/laoer536/node-bins/compare/v1.1.23...v2.1.0) (2023-06-20)
 
 
