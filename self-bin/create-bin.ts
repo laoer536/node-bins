@@ -54,7 +54,7 @@ async function createBin() {
 
   /** create user's bin **/
   const packageJson = JSON.parse(readFileSync(join(buildUserBinRoot, './package.json'), 'utf-8'))
-  packageJson.bin[binName] = `../dist/user-bin/` + binFileName
+  packageJson.bin[binName] = `./bin/` + binFileName
   const binedPackagesJsonStr = await getFormatCode(JSON.stringify(packageJson, null, 2), { parser: 'json' })
   writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
 
