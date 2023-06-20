@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.3.0](https://github.com/laoer536/node-bins/compare/v2.2.0...v2.3.0) (2023-06-20)
+
+
+### Features
+
+* delete force-push ([6475568](https://github.com/laoer536/node-bins/commit/64755685b23f88f2643f1025148c6015f40ae3d6))
+* delete force-push ([33e8fea](https://github.com/laoer536/node-bins/commit/33e8feaaf03831ccef8e6fc5cf4a7c5dded15547))
+* delete force-push ([d7173c2](https://github.com/laoer536/node-bins/commit/d7173c2a80a5abb32f7c0ece94dc7f9abe119a6a))
+* update README.md ([a70ca1b](https://github.com/laoer536/node-bins/commit/a70ca1b9865275b099bc140a0132c9ead3e104be))
+
 ## [2.2.0](https://github.com/laoer536/node-bins/compare/v2.1.0...v2.2.0) (2023-06-20)
 
 
