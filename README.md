@@ -31,4 +31,4 @@ You can unleash your creativity by writing cooler and more creative global scrip
 
 This is a demo
 
-....
+[node-bins-demo](https://github.com/laoer536/node-bins-demo)
