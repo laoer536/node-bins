@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.20](https://github.com/laoer536/node-bins/compare/v1.1.19...v1.1.20) (2023-06-20)
+
+
+### Bug Fixes
+
+* fix user-node-bin cant see ([584cde7](https://github.com/laoer536/node-bins/commit/584cde7c43792ce04011e06a56f15a5e585eb098))
+
 ### [1.1.19](https://github.com/laoer536/node-bins/compare/v1.1.18...v1.1.19) (2023-06-20)
 
 
