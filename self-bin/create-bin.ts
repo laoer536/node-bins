@@ -59,7 +59,7 @@ async function createBin() {
   writeFileSync(join(nodeBinRoot, './package.json'), binedPackagesJsonStr)
 
   /** link bin **/
-  const runRoot = nodeBinRoot.replace('/node-bins/node-bins/', '/node-bins/')
+  const runRoot = nodeBinRoot.replace('/node-bins/', '/')
   const { stdout: linkStdout } = await execaCommand(`npm link`, { cwd: runRoot })
   console.log(linkStdout)
   return { binName }
