@@ -7,10 +7,6 @@ export default defineBuildConfig({
       outDir: `${outDir}/self-bin`,
     },
     {
-      input: './user-bin/',
-      outDir: `${outDir}/user-bin`,
-    },
-    {
       input: './utils/',
       outDir: `${outDir}/utils`,
     },
