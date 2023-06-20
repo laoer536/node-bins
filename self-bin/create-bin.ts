@@ -16,9 +16,12 @@ const userBinRoot = join(nodeBinRoot, './dist/user-bin')
 const userRoot = cwd()
 const packageManager = getPackageManager()
 
-const isInCommandFileDir = await consola.prompt('你在执行‘create-bin’命令时,是在源码文件所对应的文件夹下？', {
-  type: 'confirm',
-})
+const isInCommandFileDir = await consola.prompt(
+  `When you execute the 'create-bin' command, is it in the folder corresponding to the source file?`,
+  {
+    type: 'confirm',
+  }
+)
 
 if (isInCommandFileDir) {
   createBin()
@@ -26,7 +29,7 @@ if (isInCommandFileDir) {
       const logBinColored = lightYellow(binName)
       consola.success(
         lightGreen(
-          `您已经成功创建命令${logBinColored},尝试在终端输入${logBinColored},执行您创建的命令，或者您的命令涉及传入参数，当然后面也可以加上您的参数。`
+          `You have successfully created the command ${logBinColored},Try typing in the terminal ${logBinColored}, execute the command you created，Or your command involves passing in parameters，of course you can also add your parameters later.`
         )
       )
     })
@@ -34,16 +37,20 @@ if (isInCommandFileDir) {
       consola.error(new Error(`${err}`))
     })
 } else {
-  consola.error(red('请在执行‘create-bin’命令时，保证当前路径是在源码文件所对应的文件夹下'))
+  consola.error(
+    red(
+      `When executing the 'create-bin' command, make sure that the current path is in the folder corresponding to the source file`
+    )
+  )
 }
 
 async function createBin() {
   const binName = await consola.prompt('binName', { type: 'text', placeholder: '请输入您将创建的command名称' })
   const binFileName = await consola.prompt('binFile', {
     type: 'text',
-    placeholder: '请输入这个command对应的js文件名称（需要包含后缀，且为".js"或者".ts"）',
+    placeholder: `Please enter the name of the js file corresponding to this command (need to include the suffix, and be ".js" or ".ts")`,
   })
-  consola.info('开始根据你的源码文件，创建全局命令....')
+  consola.info('Start creating global commands based on your source files....')
 
   /** build user bin's code **/
   const binFileCode = readFileSync(`${userRoot}/${binFileName}`, 'utf-8')
@@ -60,6 +67,5 @@ async function createBin() {
 
   /** link bin **/
   const { stdout: linkStdout } = await execaCommand(`${packageManager} run link`, { cwd: buildUserBinRoot })
-  console.log(linkStdout)
   return { binName }
 }

@@ -50,8 +50,7 @@ async function run() {
 
 run()
   .then((stdout) => {
-    console.log(stdout)
-    consola.success('你的命令源码打包完成！')
+    consola.success('Your command source code is packaged!')
   })
   .catch((err) => {
     consola.error(new Error(`${err}`))
