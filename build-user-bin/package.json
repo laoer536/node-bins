@@ -5,7 +5,7 @@
   "scripts": {
     "build": "npm run package:build && unbuild",
     "package:build": "jiti scripts/get-user-bin.ts",
-    "link": "npm link"
+    "link": "npm-link-shared"
   },
   "bin": {},
   "keywords": [],
