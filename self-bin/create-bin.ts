@@ -53,13 +53,13 @@ async function createBin() {
   renameSync(`${userBinRoot}/index.mjs`, `${userBinRoot}/${binFileName}`)
 
   /** create user's bin **/
-  const packageJson = JSON.parse(readFileSync(join(nodeBinRoot, './package.json'), 'utf-8'))
-  packageJson.bin[binName] = `dist/user-bin/` + binFileName
+  const packageJson = JSON.parse(readFileSync(join(buildUserBinRoot, './package.json'), 'utf-8'))
+  packageJson.bin[binName] = `../dist/user-bin/` + binFileName
   const binedPackagesJsonStr = await getFormatCode(JSON.stringify(packageJson, null, 2), { parser: 'json' })
-  writeFileSync(join(nodeBinRoot, './package.json'), binedPackagesJsonStr)
+  writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
 
   /** link bin **/
-  const { stdout: linkStdout } = await execaCommand(`npm link`, { cwd: nodeBinRoot })
+  const { stdout: linkStdout } = await execaCommand(`${packageManager} run link`, { cwd: buildUserBinRoot })
   console.log(linkStdout)
   return { binName }
 }

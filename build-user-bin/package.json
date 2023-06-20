@@ -4,8 +4,10 @@
   "description": "",
   "scripts": {
     "build": "npm run package:build && unbuild",
-    "package:build": "jiti scripts/get-user-bin.ts"
+    "package:build": "jiti scripts/get-user-bin.ts",
+    "link": "npm link"
   },
+  "bin": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
