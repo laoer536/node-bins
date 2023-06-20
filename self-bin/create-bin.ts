@@ -10,7 +10,7 @@ import { execaCommand } from 'execa'
 import { getPackageManager, getFormatCode } from '../utils'
 
 const filename = fileURLToPath(import.meta.url)
-const nodeBinRoot = join(filename, '../../../')
+const nodeBinRoot = join(filename, '../../..')
 const buildUserBinRoot = join(nodeBinRoot, './build-user-bin')
 const userBinRoot = join(nodeBinRoot, './dist/user-bin')
 const userRoot = cwd()
@@ -59,7 +59,7 @@ async function createBin() {
   writeFileSync(join(nodeBinRoot, './package.json'), binedPackagesJsonStr)
 
   /** link bin **/
-  const { stdout: linkStdout } = await execaCommand(`npm link`, { cwd: dirname(nodeBinRoot) })
+  const { stdout: linkStdout } = await execaCommand(`npm link`, { cwd: nodeBinRoot })
   console.log(linkStdout)
   return { binName }
 }
