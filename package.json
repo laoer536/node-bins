@@ -13,8 +13,7 @@
     "build-user-bin/**"
   ],
   "bin": {
-    "create-bin": "dist/self-bin/create-bin.mjs",
-    "force-push": "dist/user-bin/force-push.mjs"
+    "create-bin": "dist/self-bin/create-bin.mjs"
   },
   "files": [
     "dist",
