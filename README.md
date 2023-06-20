@@ -18,12 +18,12 @@ npm install node-bins -g
 ```js
 #!/usr/bin/env node
 
-console.log('test node bins----')
+console.log('test node bins----1111')
 ```
 
 3、Run `create-bin` in this folder.  You can see
 
-![截屏2023-06-20 21.52.19.png](https://s2.loli.net/2023/06/20/4eLMaGktS6fN7hr.png)
+![截屏2023-06-20 22.12.14.png](https://s2.loli.net/2023/06/20/1cfSBHDml9rTJeP.png)
 
 Yes! Your global nodejs command is create, you can run the command you created from anywhere ！！！ 🤪  
 
