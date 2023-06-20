@@ -50,7 +50,6 @@ async function createBin() {
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
   const { stdout } = await execaCommand(`${packageManager} run build`, { cwd: buildUserBinRoot })
   console.log(stdout)
-  renameSync(`${userBinRoot}/index.mjs`, `${userBinRoot}/${binFileName}`)
 
   /** create user's bin **/
   const packageJson = JSON.parse(readFileSync(join(buildUserBinRoot, './package.json'), 'utf-8'))
