@@ -45,7 +45,10 @@ if (isInCommandFileDir) {
 }
 
 async function createBin() {
-  const binName = await consola.prompt('binName', { type: 'text', placeholder: '请输入您将创建的command名称' })
+  const binName = await consola.prompt('binName', {
+    type: 'text',
+    placeholder: 'Please enter the name of the command you will create',
+  })
   const binFileName = await consola.prompt('binFile', {
     type: 'text',
     placeholder: `Please enter the name of the js file corresponding to this command (need to include the suffix, and be ".js" or ".ts")`,
