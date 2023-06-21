@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.4.0](https://github.com/laoer536/node-bins/compare/v2.3.0...v2.4.0) (2023-06-21)
+
+
+### Features
+
+* support mjs,ts,js,cjs, ([5fff80e](https://github.com/laoer536/node-bins/commit/5fff80e6b264f0408aa6f1f419124df3b35103e3))
+* update README.md ([96499b7](https://github.com/laoer536/node-bins/commit/96499b7e99849d5cc58242965fe0015ee1c90c42))
+
+
+### Bug Fixes
+
+* user bin path ([f7c82fd](https://github.com/laoer536/node-bins/commit/f7c82fd19e90c5fa76a85195d54c85543840fc23))
+
 ## [2.3.0](https://github.com/laoer536/node-bins/compare/v2.2.0...v2.3.0) (2023-06-20)
 
 
