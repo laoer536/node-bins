@@ -60,7 +60,7 @@ async function createBin() {
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
   const { stdout } = await execaCommand(`${packageManager} run build`, { cwd: buildUserBinRoot })
   console.log(stdout)
-  const getNewBinFileName = (binFileName: string) => {
+  const getBinFileNameWithoutSuffix = (binFileName: string) => {
     const nameArr = binFileName.split('.')
     const suffix = nameArr.pop()
     if (suffix) {
@@ -69,11 +69,12 @@ async function createBin() {
       consola.error(new Error(red('The file name entered does not have a suffix (js, ts, cjs, mjs)')))
     }
   }
-  renameSync(`${buildUserBinRoot}/bin/index.mjs`, `${buildUserBinRoot}/bin/${getNewBinFileName(binFileName)}.mjs`)
+  const binFileNameWithoutSuffix = getBinFileNameWithoutSuffix(binFileName)
+  renameSync(`${buildUserBinRoot}/bin/index.mjs`, `${buildUserBinRoot}/bin/${binFileNameWithoutSuffix}.mjs`)
 
   /** create user's bin **/
   const packageJson = JSON.parse(readFileSync(join(buildUserBinRoot, './package.json'), 'utf-8'))
-  packageJson.bin[binName] = `./bin/` + binFileName
+  packageJson.bin[binName] = `./bin/${binFileNameWithoutSuffix}.mjs`
   const binedPackagesJsonStr = await getFormatCode(JSON.stringify(packageJson, null, 2), { parser: 'json' })
   writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
 
