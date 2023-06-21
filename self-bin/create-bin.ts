@@ -51,7 +51,7 @@ async function createBin() {
   })
   const binFileName = await consola.prompt('binFile', {
     type: 'text',
-    placeholder: `Please enter the name of the js file corresponding to this command (need to include the suffix, and be ".js" or ".ts")`,
+    placeholder: `Please enter the name of the js file corresponding to this command (need to include the suffix, and be ".js" or ".ts" or "cjs" or "mjs")`,
   })
   consola.info('Start creating global commands based on your source files....')
 
@@ -60,7 +60,16 @@ async function createBin() {
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
   const { stdout } = await execaCommand(`${packageManager} run build`, { cwd: buildUserBinRoot })
   console.log(stdout)
-  renameSync(`${buildUserBinRoot}/bin/index.mjs`, `${buildUserBinRoot}/bin/${binFileName}`)
+  const getNewBinFileName = (binFileName: string) => {
+    const nameArr = binFileName.split('.')
+    const suffix = nameArr.pop()
+    if (suffix) {
+      return nameArr.join('.')
+    } else {
+      consola.error(new Error(red('The file name entered does not have a suffix (js, ts, cjs, mjs)')))
+    }
+  }
+  renameSync(`${buildUserBinRoot}/bin/index.mjs`, `${buildUserBinRoot}/bin/${getNewBinFileName(binFileName)}.mjs`)
 
   /** create user's bin **/
   const packageJson = JSON.parse(readFileSync(join(buildUserBinRoot, './package.json'), 'utf-8'))
