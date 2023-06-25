@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.4.2](https://github.com/laoer536/node-bins/compare/v2.4.1...v2.4.2) (2023-06-25)
+
+
+### Bug Fixes
+
+* user install command error ([6b4b756](https://github.com/laoer536/node-bins/commit/6b4b7568f0e2d414091d81c21a209ace6eb0d62a))
+
 ### [2.4.1](https://github.com/laoer536/node-bins/compare/v2.4.0...v2.4.1) (2023-06-21)
 
 ## [2.4.0](https://github.com/laoer536/node-bins/compare/v2.3.0...v2.4.0) (2023-06-21)
