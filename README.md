@@ -13,7 +13,7 @@ npm install node-bins -g
 
 1、Create a folder, and  run `npm init` or `pnpm init` or `yarn init` in this folder to create a 'package.json' file.
 
-2、Create your command source code file (js, cjs, mjs, ts) under floater, which contains all your command logic. Note that you need to write this code on the first line - '#!/usr/bin/env node'. For example
+2、Create your command source code file (js, cjs, mjs, ts) under this folder, which contains all your command logic. Note that you need to write this code on the first line - '#!/usr/bin/env node'. For example
 
 ```js
 #!/usr/bin/env node
