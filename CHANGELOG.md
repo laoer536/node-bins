@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v2.5.1
+
+[compare changes](https://undefined/undefined/compare/v2.5.0...v2.5.1)
+
+### 🩹 Fixes
+
+- NodeBinRoot error (4be1f4b)
+
+### 🎨 Styles
+
+- Code optimization (e500152)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.5.0
 
 [compare changes](https://undefined/undefined/compare/v2.4.2...v2.5.0)
