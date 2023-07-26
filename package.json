@@ -5,7 +5,7 @@
   "author": "laoer536",
   "repository": "git@github.com:laoer536/node-bins.git",
   "scripts": {
-    "build": "unbuild && jiti scripts/fix-utils-path.ts",
+    "build": "unbuild && jiti scripts/fix-utils-path.ts && jiti scripts/add-node-env.ts",
     "build:user": "pnpm --filter build-user-bin run build",
     "release": "pnpm build && standard-version && git push --follow-tags && pnpm publish"
   },

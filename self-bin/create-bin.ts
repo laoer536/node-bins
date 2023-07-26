@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-// import minimist from 'minimist'
 import { red, lightGreen, lightYellow } from 'kolorist'
 import { fileURLToPath } from 'node:url'
 import { join, dirname } from 'pathe'
