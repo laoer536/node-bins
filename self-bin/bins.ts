@@ -6,7 +6,7 @@ import { readFileSync } from 'node:fs'
 import type { PackageJson } from '../build-user-bin/scripts/get-user-bin'
 
 const filename = fileURLToPath(import.meta.url)
-const nodeBinRoot = join(dirname(filename), '..')
+const nodeBinRoot = join(dirname(filename), '../..')
 const buildUserBinRoot = join(nodeBinRoot, './build-user-bin')
 
 enum CommandArgumentList {
