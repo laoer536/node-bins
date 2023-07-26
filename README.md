@@ -32,3 +32,9 @@ You can unleash your creativity by writing cooler and more creative global scrip
 This is a demo
 
 [node-bins-demo](https://github.com/laoer536/node-bins-demo)
+
+## Something new
+
+  Here are some built-in commands to choose from -
+  🎈 1. 'bins --help': Display Help Information.
+  🎈 2. 'bins --list': Check which commands are currently managed by 'node-bins'.
