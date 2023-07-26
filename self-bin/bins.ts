@@ -14,12 +14,11 @@ enum CommandArgumentList {
   'list' = '--list',
 }
 const userCommandArgument = minimist<Record<keyof typeof CommandArgumentList, boolean>>(process.argv.slice(2))
-console.log('userCommandArgument', userCommandArgument)
 if (userCommandArgument.help) {
   console.log(`${green('✨ node-bins help tip:')}
   Here are some built-in commands to choose from.
   🎈 1. ${yellow('bins --help')}: Display Help Information.
-  🎈 2. ${yellow('bins --list')} : Check which commands are currently managed by node bins.
+  🎈 2. ${yellow('bins --list')} : Check which commands are currently managed by node-bins.
   `)
 } else if (userCommandArgument.list) {
   const userBinsJsonInfo = JSON.parse(readFileSync(join(buildUserBinRoot, 'package.json'), 'utf-8')) as PackageJson
