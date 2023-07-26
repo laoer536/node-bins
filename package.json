@@ -7,7 +7,7 @@
   "scripts": {
     "build": "unbuild && jiti scripts/fix-utils-path.ts && jiti scripts/add-node-env.ts",
     "build:user": "pnpm --filter build-user-bin run build",
-    "release": "pnpm build && standard-version && git push --follow-tags && pnpm publish"
+    "release": "pnpm build && changelogen --release && npm publish && git push --follow-tags"
   },
   "workspaces": [
     "build-user-bin/**"
@@ -43,7 +43,7 @@
     "@types/minimist": "^1.2.2",
     "@types/node": "^20.3.1",
     "@types/prettier": "^2.7.3",
-    "standard-version": "^9.5.0",
+    "changelogen": "^0.5.4",
     "typescript": "^5.1.3"
   }
 }
