@@ -8,9 +8,10 @@ import consola from 'consola'
 // @ts-ignore
 import { getFormatCode, getPackageManager } from '../../dist/utils/index.mjs'
 
-interface PackageJson {
+export interface PackageJson {
   dependencies: { [key: string]: string }
   devDependencies: { [key: string]: string }
+  bin: { [key: string]: string }
   [key: string]: string | { [key: string]: string }
 }
 
