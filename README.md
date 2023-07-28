@@ -36,5 +36,7 @@ This is a demo
 ## Something new
 
   Here are some built-in commands to choose from -
-  🎈 1. 'bins --help': Display Help Information.
-  🎈 2. 'bins --list': Check which commands are currently managed by 'node-bins'.
+
+  🎈 1. `bins --help`: Display Help Information.
+
+  🎈 2. `bins --list`: Check which commands are currently managed by 'node-bins'.
