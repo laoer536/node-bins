@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.6.2
+
+[compare changes](https://undefined/undefined/compare/v2.6.1...v2.6.2)
+
+### 🩹 Fixes
+
+- Fix the issue where the command can still run after deleting bin (b94be1e)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.6.1
 
 [compare changes](https://undefined/undefined/compare/v2.6.0...v2.6.1)
