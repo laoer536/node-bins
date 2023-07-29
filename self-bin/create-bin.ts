@@ -1,4 +1,4 @@
-import { red, lightGreen, lightYellow } from 'kolorist'
+import { red, lightGreen, lightYellow, yellow } from 'kolorist'
 import { fileURLToPath } from 'node:url'
 import { join, dirname } from 'pathe'
 import { cwd } from 'node:process'
@@ -23,13 +23,21 @@ const isInCommandFileDir = await consola.prompt(
 
 if (isInCommandFileDir) {
   createBin()
-    .then(({ binName }) => {
-      const logBinColored = lightYellow(binName)
-      consola.success(
-        lightGreen(
-          `You have successfully created the command ${logBinColored},Try typing in the terminal ${logBinColored}, execute the command you created，Or your command involves passing in parameters，of course you can also add your parameters later.`
+    .then(({ binName, binDescription }) => {
+      const userBinsJsonInfo = JSON.parse(readFileSync(join(buildUserBinRoot, 'user-bins.json'), 'utf-8')) as Record<
+        string,
+        string
+      >
+      userBinsJsonInfo[binName] = binDescription
+      getFormatCode(JSON.stringify(userBinsJsonInfo), { parser: 'json' }).then((formatCode) => {
+        writeFileSync(join(buildUserBinRoot, 'user-bins.json'), formatCode)
+        const logBinColored = lightYellow(binName)
+        consola.success(
+          lightGreen(
+            `You have successfully created the command ${logBinColored},Try typing in the terminal ${logBinColored}, execute the command you created，Or your command involves passing in parameters，of course you can also add your parameters later.`
+          )
         )
-      )
+      })
     })
     .catch((err) => {
       consola.error(new Error(`${err}`))
@@ -50,6 +58,10 @@ async function createBin() {
   const binFileName = await consola.prompt('binFile', {
     type: 'text',
     placeholder: `Please enter the name of the js file corresponding to this command (need to include the suffix, and be ".js" or ".ts" or "cjs" or "mjs")`,
+  })
+  const binDescription = await consola.prompt('binDescription', {
+    type: 'text',
+    placeholder: `Please enter a description of the command named ${yellow(binName)} that you are about to create`,
   })
   consola.info('Start creating global commands based on your source files....')
 
@@ -78,5 +90,5 @@ async function createBin() {
 
   /** link bin **/
   const { stdout: linkStdout } = await execaCommand(`${packageManager} run link`, { cwd: buildUserBinRoot })
-  return { binName }
+  return { binName, binDescription }
 }

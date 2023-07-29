@@ -3,7 +3,6 @@ import { green, red, yellow } from 'kolorist'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'pathe'
 import { readFileSync } from 'node:fs'
-import type { PackageJson } from '../build-user-bin/scripts/get-user-bin'
 
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(dirname(filename), '../..')
@@ -21,11 +20,16 @@ if (userCommandArgument.help) {
   🎈 2. ${yellow(`bins ${CommandArgumentList.list}`)} : Check which commands are currently managed by node-bins.
   `)
 } else if (userCommandArgument.list) {
-  const userBinsJsonInfo = JSON.parse(readFileSync(join(buildUserBinRoot, 'package.json'), 'utf-8')) as PackageJson
-  const userBins = Object.keys(userBinsJsonInfo.bin)
+  const userBinsJsonInfo = JSON.parse(readFileSync(join(buildUserBinRoot, 'user-bins.json'), 'utf-8')) as Record<
+    string,
+    string
+  >
+  const userBins = Object.entries(userBinsJsonInfo)
   if (userBins.length) {
-    const coloredBinName = userBins.map((binName) => yellow(binName))
-    console.log('You have currently created the following commands in node bins:\n' + coloredBinName.join(' | '))
+    const coloredBinName = userBins.map(
+      ([binName, binDescription], index) => `${index + 1}. ${yellow(binName)}: ${green(binDescription)}`
+    )
+    console.log('You have currently created the following commands in node bins:\n' + coloredBinName.join(' \n '))
   } else {
     throw red('Error: You have not yet created a new command in node-bins.')
   }

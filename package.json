@@ -14,6 +14,7 @@
   ],
   "bin": {
     "create-bin": "dist/self-bin/create-bin.mjs",
+    "delete-bin": "dist/self-bin/delete-bin.mjs",
     "bins": "dist/self-bin/bins.mjs"
   },
   "files": [
