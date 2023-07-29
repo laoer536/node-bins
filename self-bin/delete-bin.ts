@@ -3,13 +3,15 @@ import { dirname, join } from 'pathe'
 import minimist from 'minimist'
 import { readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import type { PackageJson } from '../build-user-bin/scripts/get-user-bin'
-import { getFormatCode } from '../utils'
+import { getFormatCode, getPackageManager } from '../utils'
 import { green, red, yellow } from 'kolorist'
 import consola from 'consola'
+import { execaCommand } from 'execa'
 
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(dirname(filename), '../..')
 const buildUserBinRoot = join(nodeBinRoot, './build-user-bin')
+const packageManager = getPackageManager()
 
 const [deleteBin] = minimist(process.argv.slice(2))._
 const userBinsJsonInfo = JSON.parse(readFileSync(join(buildUserBinRoot, 'user-bins.json'), 'utf-8')) as Record<
@@ -55,4 +57,5 @@ async function updateUserBinsInfo() {
   delete userBinsJsonInfo[deleteBin]
   const formatCode = await getFormatCode(JSON.stringify(userBinsJsonInfo), { parser: 'json' })
   writeFileSync(join(buildUserBinRoot, 'user-bins.json'), formatCode)
+  await execaCommand(`${packageManager} run link`, { cwd: buildUserBinRoot })
 }

@@ -89,6 +89,6 @@ async function createBin() {
   writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
 
   /** link bin **/
-  const { stdout: linkStdout } = await execaCommand(`${packageManager} run link`, { cwd: buildUserBinRoot })
+  await execaCommand(`${packageManager} run link`, { cwd: buildUserBinRoot })
   return { binName, binDescription }
 }
