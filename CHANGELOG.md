@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.6.1
+
+[compare changes](https://undefined/undefined/compare/v2.6.0...v2.6.1)
+
+### 🩹 Fixes
+
+- Delete bin err (26fc9ad)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.6.0
 
 [compare changes](https://undefined/undefined/compare/v2.5.1...v2.6.0)
