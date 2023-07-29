@@ -4,7 +4,8 @@ import minimist from 'minimist'
 import { readFileSync, unlinkSync, writeFileSync } from 'node:fs'
 import type { PackageJson } from '../build-user-bin/scripts/get-user-bin'
 import { getFormatCode } from '../utils'
-import { red } from 'kolorist'
+import { green, red, yellow } from 'kolorist'
+import consola from 'consola'
 
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(dirname(filename), '../..')
@@ -19,8 +20,22 @@ if (!userBinsJsonInfo[deleteBin]) {
   throw red(`Error: You haven't created this command in 'node-bins' and can't delete it.`)
 }
 
+const isConfirmDelete = await consola.prompt(
+  `Are you sure you want to remove this command named ${yellow(deleteBin)}?`,
+  {
+    type: 'confirm',
+  }
+)
+
+if (!isConfirmDelete) {
+  throw red('You have canceled the deletion.')
+}
+
 deleteBinFn()
-  .then(updateUserBinsInfo)
+  .then(() => updateUserBinsInfo())
+  .then(() => {
+    console.log(green('😲 Deleted successfully!'))
+  })
   .catch((err) => {
     console.log(red(`Error: ${err}`))
   })
