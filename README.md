@@ -37,6 +37,10 @@ This is a demo
 
   Here are some built-in commands to choose from -
 
-  🎈 1. `bins --help`: Display Help Information.
+🎈 1. `bins --help`: Display Help Information.
 
-  🎈 2. `bins --list`: Check which commands are currently managed by 'node-bins'.
+🎈 2. `bins --list`: Check which commands are currently managed by 'node-bins'.
+
+🎈 2. `create-bin`: Create a custom command for the corresponding file in the corresponding script folder.
+
+🎈 2. `delete-bin <deleteBinName>`: Delete the custom commands you have already created in `node-bins`.
