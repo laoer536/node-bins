@@ -29,7 +29,7 @@ if (userCommandArgument.help) {
     const coloredBinName = userBins.map(
       ([binName, binDescription], index) => `${index + 1}. ${yellow(binName)}: ${green(binDescription)}`
     )
-    console.log('You have currently created the following commands in node bins:\n' + coloredBinName.join(' \n '))
+    console.log('You have currently created the following commands in node bins:\n' + coloredBinName.join('\n'))
   } else {
     throw red('Error: You have not yet created a new command in node-bins.')
   }
