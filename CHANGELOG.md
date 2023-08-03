@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v2.6.3
+
+[compare changes](https://undefined/undefined/compare/v2.6.2...v2.6.3)
+
+### 📖 Documentation
+
+- README.md update (9922711)
+- README.md update (70edca2)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.6.2
 
 [compare changes](https://undefined/undefined/compare/v2.6.1...v2.6.2)
