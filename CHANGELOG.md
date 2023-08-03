@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v2.6.4
+
+[compare changes](https://undefined/undefined/compare/v2.6.3...v2.6.4)
+
+### 🔥 Performance
+
+- Use 'binFilePath' replace 'binFileName, more free (a516a5f)
+
+### 🩹 Fixes
+
+- Bin list (6fd3a28)
+
+### ❤️  Contributors
+
+- LJie <1547698569@qq.com>
+
 ## v2.6.3
 
 [compare changes](https://undefined/undefined/compare/v2.6.2...v2.6.3)
