@@ -1,6 +1,6 @@
 import { red, lightGreen, lightYellow, yellow } from 'kolorist'
 import { fileURLToPath } from 'node:url'
-import { join, dirname } from 'pathe'
+import { join } from 'pathe'
 import { cwd } from 'node:process'
 import consola from 'consola'
 import { readFileSync, writeFileSync, renameSync } from 'node:fs'
@@ -10,12 +10,12 @@ import { getPackageManager, getFormatCode } from '../utils'
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(filename, '../../..')
 const buildUserBinRoot = join(nodeBinRoot, './build-user-bin')
-const userBinRoot = join(nodeBinRoot, './dist/user-bin')
+// const userBinRoot = join(nodeBinRoot, './dist/user-bin')
 const userRoot = cwd()
 const packageManager = getPackageManager()
 
 const isInCommandFileDir = await consola.prompt(
-  `When you execute the 'create-bin' command, is it in the folder corresponding to the source file?`,
+  `When you execute the ${yellow('create-bin')} command, is it in the root of the project?`,
   {
     type: 'confirm',
   }
@@ -55,9 +55,9 @@ async function createBin() {
     type: 'text',
     placeholder: 'Please enter the name of the command you will create',
   })
-  const binFileName = await consola.prompt('binFile', {
+  const binFilePath = await consola.prompt('binFilePath', {
     type: 'text',
-    placeholder: `Please enter the name of the js file corresponding to this command (need to include the suffix, and be ".js" or ".ts" or "cjs" or "mjs")`,
+    placeholder: `Please enter the path of the js file corresponding to this command (need to include the suffix, and be ".js" or ".ts" or "cjs" or "mjs")`,
   })
   const binDescription = await consola.prompt('binDescription', {
     type: 'text',
@@ -66,7 +66,7 @@ async function createBin() {
   consola.info('Start creating global commands based on your source files....')
 
   /** build user bin's code **/
-  const binFileCode = readFileSync(`${userRoot}/${binFileName}`, 'utf-8')
+  const binFileCode = readFileSync(join(userRoot, binFilePath), 'utf-8')
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
   const { stdout } = await execaCommand(`${packageManager} run build`, { cwd: buildUserBinRoot })
   console.log(stdout)
@@ -79,7 +79,7 @@ async function createBin() {
       consola.error(new Error(red('The file name entered does not have a suffix (js, ts, cjs, mjs)')))
     }
   }
-  const binFileNameWithoutSuffix = getBinFileNameWithoutSuffix(binFileName)
+  const binFileNameWithoutSuffix = getBinFileNameWithoutSuffix(binFilePath.split('/').pop() as string)
   renameSync(`${buildUserBinRoot}/bin/index.mjs`, `${buildUserBinRoot}/bin/${binFileNameWithoutSuffix}.mjs`)
 
   /** create user's bin **/
