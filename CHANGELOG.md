@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.6.6
+
+[compare changes](https://undefined/undefined/compare/v2.6.5...v2.6.6)
+
+### 🩹 Fixes
+
+- User bin create err (ee39fcc)
+
+### ❤️  Contributors
+
+- LJie <1547698569@qq.com>
+
 ## v2.6.5
 
 [compare changes](https://undefined/undefined/compare/v2.6.4...v2.6.5)
