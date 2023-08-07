@@ -1,6 +1,6 @@
 {
   "name": "node-bins",
-  "version": "2.6.4",
+  "version": "2.6.5",
   "description": "Fast create  global commands by nodejs.",
   "author": "laoer536",
   "repository": "git@github.com:laoer536/node-bins.git",
