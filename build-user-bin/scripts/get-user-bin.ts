@@ -6,7 +6,7 @@ import { execaCommand } from 'execa'
 import consola from 'consola'
 
 // @ts-ignore
-import { getFormatCode, getPackageManager } from '../../dist/utils/index.mjs'
+import { getFormatCode } from '../../dist/utils/index.mjs'
 
 export interface PackageJson {
   dependencies: { [key: string]: string }
@@ -18,7 +18,6 @@ export interface PackageJson {
 const filename = fileURLToPath(import.meta.url)
 const buildUserBinRoot = join(filename, '../../')
 const userRoot = cwd()
-const packageManager = getPackageManager()
 
 function getMainInfoUserPackagejson() {
   const userPackageJson = JSON.parse(readFileSync(`${userRoot}/package.json`, 'utf-8')) as PackageJson
@@ -43,7 +42,10 @@ async function writeUserpackagejsonIn() {
 
 async function run() {
   await writeUserpackagejsonIn()
-  const { stdout } = await execaCommand(`${packageManager} install && ${packageManager} run build`, {
+  await execaCommand('npm cache clear --force && npm install', {
+    cwd: buildUserBinRoot,
+  })
+  const { stdout } = await execaCommand(`npm run build`, {
     cwd: buildUserBinRoot,
   })
   return stdout
