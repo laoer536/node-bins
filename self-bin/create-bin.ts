@@ -66,6 +66,7 @@ async function createBin() {
   consola.info('Start creating global commands based on your source files....')
 
   /** build user bin's code **/
+  console.log("build user bin's code...")
   const binFileCode = readFileSync(join(userRoot, binFilePath), 'utf-8')
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
   const { stdout } = await execaCommand(`${packageManager} run build`, { cwd: buildUserBinRoot })
@@ -83,12 +84,14 @@ async function createBin() {
   renameSync(`${buildUserBinRoot}/bin/index.mjs`, `${buildUserBinRoot}/bin/${binFileNameWithoutSuffix}.mjs`)
 
   /** create user's bin **/
+  console.log("create user's bin...")
   const packageJson = JSON.parse(readFileSync(join(buildUserBinRoot, './package.json'), 'utf-8'))
   packageJson.bin[binName] = `./bin/${binFileNameWithoutSuffix}.mjs`
   const binedPackagesJsonStr = await getFormatCode(JSON.stringify(packageJson, null, 2), { parser: 'json' })
   writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
 
   /** link bin **/
+  console.log('link bin...')
   await execaCommand(`${packageManager} run link`, { cwd: buildUserBinRoot })
   return { binName, binDescription }
 }

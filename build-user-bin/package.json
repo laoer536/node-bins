@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "npm run user && npm install  && unbuild",
-    "user": "jiti scripts/get-user-bin.ts",
+    "build": "jiti scripts/get-user-bin.ts",
     "link": "npm link --force"
   },
   "bin": {},
