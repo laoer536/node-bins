@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v2.6.8
+
+[compare changes](https://undefined/undefined/compare/v2.6.7...v2.6.8)
+
+### 🩹 Fixes
+
+- Error (168d6d0)
+- Error (0a16794)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.6.7
 
 [compare changes](https://undefined/undefined/compare/v2.6.6...v2.6.7)
