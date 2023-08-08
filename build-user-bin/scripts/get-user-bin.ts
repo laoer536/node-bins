@@ -44,7 +44,7 @@ async function writeUserpackagejsonIn() {
 
 async function run() {
   await writeUserpackagejsonIn()
-  const { stdout } = await execaCommand(`npm install && unbuild`, {
+  const { stdout } = await execaCommand(`npm install`, {
     cwd: buildUserBinRoot,
   })
   return stdout
