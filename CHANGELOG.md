@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v2.6.7
+
+[compare changes](https://undefined/undefined/compare/v2.6.6...v2.6.7)
+
+### 🩹 Fixes
+
+- Error (6fe6e03)
+- Error (b0f9a6d)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.6.6
 
 [compare changes](https://undefined/undefined/compare/v2.6.5...v2.6.6)
