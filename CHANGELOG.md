@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.7.0
+
+[compare changes](https://undefined/undefined/compare/v2.6.9...v2.7.0)
+
+### 🚀 Enhancements
+
+- Auto install for user (5b83cb0)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.6.9
 
 [compare changes](https://undefined/undefined/compare/v2.6.8...v2.6.9)
