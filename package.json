@@ -4,10 +4,12 @@
   "description": "Fast create  global commands by nodejs.",
   "author": "laoer536",
   "repository": "git@github.com:laoer536/node-bins.git",
+  "workspaces": [
+    "build-user-bin"
+  ],
   "scripts": {
     "build": "unbuild && jiti scripts/fix-utils-path.ts && jiti scripts/add-node-env.ts",
-    "release": "pnpm build && changelogen --release && npm publish && git push --follow-tags",
-    "postinstall": "./dist/user-package-install.mjs"
+    "release": "pnpm build && changelogen --release && npm publish && git push --follow-tags"
   },
   "bin": {
     "create-bin": "dist/self-bin/create-bin.mjs",
