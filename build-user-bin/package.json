@@ -3,15 +3,24 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "jiti scripts/get-user-bin.ts && unbuild",
+    "build": "npm run user && npm install  && unbuild",
+    "user": "jiti scripts/get-user-bin.ts",
     "link": "npm link --force"
   },
   "bin": {},
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
   "devDependencies": {
-    "unbuild": "^1.2.1"
+    "@types/node": "^20.3.1"
+  },
+  "dependencies": {
+    "consola": "^3.1.0",
+    "execa": "^7.1.1",
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "pathe": "^1.1.1",
+    "jiti": "^1.18.2",
+    "typescript": "^5.1.6"
   }
 }

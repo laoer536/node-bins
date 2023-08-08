@@ -20,8 +20,10 @@ const buildUserBinRoot = join(filename, '../../')
 const userRoot = cwd()
 
 function getMainInfoUserPackagejson() {
-  const userPackageJson = JSON.parse(readFileSync(`${userRoot}/package.json`, 'utf-8')) as PackageJson
-  const buildUserBinPackageJson = JSON.parse(readFileSync(`${buildUserBinRoot}/package.json`, 'utf-8')) as PackageJson
+  const userPackageJson = JSON.parse(readFileSync(join(userRoot, 'package.json'), 'utf-8')) as PackageJson
+  const buildUserBinPackageJson = JSON.parse(
+    readFileSync(join(buildUserBinRoot, 'package.json'), 'utf-8')
+  ) as PackageJson
   const { dependencies = {}, devDependencies = {} } = userPackageJson
   const userDependencies = { dependencies, devDependencies }
 
@@ -42,9 +44,6 @@ async function writeUserpackagejsonIn() {
 
 async function run() {
   await writeUserpackagejsonIn()
-  await execaCommand('npm install', {
-    cwd: buildUserBinRoot,
-  })
   const { stdout } = await execaCommand(`npm run build`, {
     cwd: buildUserBinRoot,
   })
