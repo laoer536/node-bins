@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.6.9
+
+[compare changes](https://undefined/undefined/compare/v2.6.8...v2.6.9)
+
+### 🩹 Fixes
+
+- Error (6c8e56b)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.6.8
 
 [compare changes](https://undefined/undefined/compare/v2.6.7...v2.6.8)
