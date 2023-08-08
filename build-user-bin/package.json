@@ -11,5 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "unbuild": "^1.2.1"
+  }
 }
