@@ -1,7 +1,12 @@
 import { defineBuildConfig } from 'unbuild'
 export default defineBuildConfig({
-  entries: ['./src/index'],
-  outDir: 'bin',
+  entries: [
+    {
+      builder: 'mkdist',
+      input: './src',
+      outDir: `bin`,
+    },
+  ],
   clean: false,
   failOnWarn: false,
   rollup: {
