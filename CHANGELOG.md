@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.7.4
+
+[compare changes](https://undefined/undefined/compare/v2.7.3...v2.7.4)
+
+### 🩹 Fixes
+
+- Build error (30ea266)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.7.3
 
 [compare changes](https://undefined/undefined/compare/v2.7.2...v2.7.3)
