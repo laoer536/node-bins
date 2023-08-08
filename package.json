@@ -7,7 +7,7 @@
   "scripts": {
     "build": "unbuild && jiti scripts/fix-utils-path.ts && jiti scripts/add-node-env.ts",
     "release": "pnpm build && changelogen --release && npm publish && git push --follow-tags",
-    "postinstall": "node ./dist/user-package-install.mjs"
+    "postinstall": "./dist/user-package-install.mjs"
   },
   "bin": {
     "create-bin": "dist/self-bin/create-bin.mjs",
