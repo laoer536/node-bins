@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v2.7.5
+
+[compare changes](https://undefined/undefined/compare/v2.7.4...v2.7.5)
+
+### 🩹 Fixes
+
+- Build error (36db171)
+- Use mkdist build user bin (47d7145)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.7.4
 
 [compare changes](https://undefined/undefined/compare/v2.7.3...v2.7.4)
