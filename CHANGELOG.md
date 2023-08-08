@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.7.2
+
+[compare changes](https://undefined/undefined/compare/v2.7.1...v2.7.2)
+
+### 🩹 Fixes
+
+- Postinstall not work (7acb21a)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.7.1
 
 [compare changes](https://undefined/undefined/compare/v2.7.0...v2.7.1)
