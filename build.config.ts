@@ -1,6 +1,7 @@
 import { defineBuildConfig } from 'unbuild'
 const outDir = './dist'
 export default defineBuildConfig({
+  clean: true,
   entries: [
     {
       input: './self-bin/',
@@ -9,6 +10,9 @@ export default defineBuildConfig({
     {
       input: './utils/',
       outDir: `${outDir}/utils`,
+    },
+    {
+      input: './scripts/user-package-install',
     },
   ],
   rollup: {
