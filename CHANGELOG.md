@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.7.3
+
+[compare changes](https://undefined/undefined/compare/v2.7.2...v2.7.3)
+
+### 🩹 Fixes
+
+- Build error (778975d)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+
 ## v2.7.2
 
 [compare changes](https://undefined/undefined/compare/v2.7.1...v2.7.2)
