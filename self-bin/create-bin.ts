@@ -68,7 +68,7 @@ function getMainInfoUserPackagejson() {
   let key: keyof typeof userDependencies
   for (key in userDependencies) {
     for (const dependencie in userDependencies[key]) {
-      buildUserBinPackageJson[key][dependencie] = dependencie
+      buildUserBinPackageJson[key][dependencie] = userDependencies[key][dependencie]
     }
   }
   return { buildUserBinPackageJson }
