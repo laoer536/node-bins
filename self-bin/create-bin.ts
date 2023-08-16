@@ -6,6 +6,7 @@ import consola from 'consola'
 import { readFileSync, writeFileSync, renameSync } from 'node:fs'
 import { execaCommand } from 'execa'
 import { getPackageManager, getFormatCode } from '../utils'
+import { PackageJson } from '../build-user-bin/scripts/get-user-bin'
 
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(filename, '../../..')
@@ -50,6 +51,29 @@ if (isInCommandFileDir) {
   )
 }
 
+function getMainInfoUserPackagejson() {
+  const userPackageJson = JSON.parse(readFileSync(join(userRoot, 'package.json'), 'utf-8')) as PackageJson
+  const buildUserBinPackageJson = JSON.parse(
+    readFileSync(join(buildUserBinRoot, 'package.json'), 'utf-8')
+  ) as PackageJson
+  const { dependencies = {}, devDependencies = {} } = userPackageJson
+  const userDependencies = { dependencies, devDependencies }
+
+  let key: keyof typeof userDependencies
+  for (key in userDependencies) {
+    for (const dependencie in userDependencies[key]) {
+      buildUserBinPackageJson[key][dependencie] = dependencie
+    }
+  }
+  return { buildUserBinPackageJson }
+}
+
+async function writeUserpackagejsonIn() {
+  const { buildUserBinPackageJson } = getMainInfoUserPackagejson()
+  const binedPackagesJsonStr = await getFormatCode(JSON.stringify(buildUserBinPackageJson, null, 2), { parser: 'json' })
+  writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
+}
+
 async function createBin() {
   const binName = await consola.prompt('binName', {
     type: 'text',
@@ -67,6 +91,7 @@ async function createBin() {
 
   /** build user bin's code **/
   console.log("build user bin's code...")
+  await writeUserpackagejsonIn()
   const binFileCode = readFileSync(join(userRoot, binFilePath), 'utf-8')
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
   const { stdout } = await execaCommand(`${packageManager} run build`, { cwd: buildUserBinRoot })
