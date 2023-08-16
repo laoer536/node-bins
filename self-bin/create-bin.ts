@@ -53,25 +53,23 @@ if (isInCommandFileDir) {
 
 function getMainInfoUserPackagejson() {
   const userPackageJson = JSON.parse(readFileSync(join(userRoot, 'package.json'), 'utf-8')) as PackageJson
-  const buildUserBinPackageJson = JSON.parse(
-    readFileSync(join(buildUserBinRoot, 'package.json'), 'utf-8')
-  ) as PackageJson
+  const nodeBinPackageJson = JSON.parse(readFileSync(join(nodeBinRoot, 'package.json'), 'utf-8')) as PackageJson
   const { dependencies = {}, devDependencies = {} } = userPackageJson
   const userDependencies = { dependencies, devDependencies }
 
   let key: keyof typeof userDependencies
   for (key in userDependencies) {
     for (const dependencie in userDependencies[key]) {
-      buildUserBinPackageJson[key][dependencie] = dependencie
+      nodeBinPackageJson[key][dependencie] = dependencie
     }
   }
-  return { buildUserBinPackageJson }
+  return { nodeBinPackageJson }
 }
 
 async function writeUserpackagejsonIn() {
-  const { buildUserBinPackageJson } = getMainInfoUserPackagejson()
-  const binedPackagesJsonStr = await getFormatCode(JSON.stringify(buildUserBinPackageJson, null, 2), { parser: 'json' })
-  writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
+  const { nodeBinPackageJson } = getMainInfoUserPackagejson()
+  const binedPackagesJsonStr = await getFormatCode(JSON.stringify(nodeBinPackageJson, null, 2), { parser: 'json' })
+  writeFileSync(join(nodeBinRoot, './package.json'), binedPackagesJsonStr)
 }
 
 async function createBin() {
