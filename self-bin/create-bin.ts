@@ -7,6 +7,13 @@ import { readFileSync, writeFileSync, renameSync } from 'node:fs'
 import { execaCommand } from 'execa'
 import { getPackageManager, getFormatCode } from '../utils'
 
+export interface PackageJson {
+  dependencies: { [key: string]: string }
+  devDependencies: { [key: string]: string }
+  bin: { [key: string]: string }
+  [key: string]: string | { [key: string]: string }
+}
+
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(filename, '../../..')
 const buildUserBinRoot = join(nodeBinRoot, './build-user-bin')
@@ -50,6 +57,29 @@ if (isInCommandFileDir) {
   )
 }
 
+function getMainInfoUserPackagejson() {
+  const userPackageJson = JSON.parse(readFileSync(join(userRoot, 'package.json'), 'utf-8')) as PackageJson
+  const buildUserBinPackageJson = JSON.parse(
+    readFileSync(join(buildUserBinRoot, 'package.json'), 'utf-8')
+  ) as PackageJson
+  const { dependencies = {}, devDependencies = {} } = userPackageJson
+  const userDependencies = { dependencies, devDependencies }
+
+  let key: keyof typeof userDependencies
+  for (key in userDependencies) {
+    for (const dependencie in userDependencies[key]) {
+      buildUserBinPackageJson[key][dependencie] = dependencie
+    }
+  }
+  return { buildUserBinPackageJson }
+}
+
+async function writeUserpackagejsonIn() {
+  const { buildUserBinPackageJson } = getMainInfoUserPackagejson()
+  const binedPackagesJsonStr = await getFormatCode(JSON.stringify(buildUserBinPackageJson, null, 2), { parser: 'json' })
+  writeFileSync(join(buildUserBinRoot, './package.json'), binedPackagesJsonStr)
+}
+
 async function createBin() {
   const binName = await consola.prompt('binName', {
     type: 'text',
@@ -67,6 +97,8 @@ async function createBin() {
 
   /** build user bin's code **/
   console.log("build user bin's code...")
+  await writeUserpackagejsonIn()
+  await execaCommand('npm install workspaces', { cwd: nodeBinRoot })
   const binFileCode = readFileSync(join(userRoot, binFilePath), 'utf-8')
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
   const { stdout } = await execaCommand(`${packageManager} run build`, { cwd: buildUserBinRoot })
