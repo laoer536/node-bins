@@ -6,7 +6,13 @@ import consola from 'consola'
 import { readFileSync, writeFileSync, renameSync } from 'node:fs'
 import { execaCommand } from 'execa'
 import { getPackageManager, getFormatCode } from '../utils'
-import { PackageJson } from '../build-user-bin/scripts/get-user-bin'
+
+export interface PackageJson {
+  dependencies: { [key: string]: string }
+  devDependencies: { [key: string]: string }
+  bin: { [key: string]: string }
+  [key: string]: string | { [key: string]: string }
+}
 
 const filename = fileURLToPath(import.meta.url)
 const nodeBinRoot = join(filename, '../../..')
@@ -90,6 +96,7 @@ async function createBin() {
   /** build user bin's code **/
   console.log("build user bin's code...")
   await writeUserpackagejsonIn()
+  await execaCommand('npm install', { cwd: nodeBinRoot })
   const binFileCode = readFileSync(join(userRoot, binFilePath), 'utf-8')
   writeFileSync(join(buildUserBinRoot, './src/index.ts'), binFileCode)
   const { stdout } = await execaCommand(`${packageManager} run build`, { cwd: buildUserBinRoot })
