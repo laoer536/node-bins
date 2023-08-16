@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v2.7.6
+
+[compare changes](https://undefined/undefined/compare/v2.7.5...v2.7.6)
+
+### 🩹 Fixes
+
+- Read user dependencies not work (8b2bef4)
+
+### 💅 Refactors
+
+- Delete (1bf6a36)
+
+### ❤️  Contributors
+
+- Laoer536 <1547698569@qq.com>
+- LJie <1547698569@qq.com>
+
 ## v2.7.5
 
 [compare changes](https://undefined/undefined/compare/v2.7.4...v2.7.5)
