@@ -1,8 +1,6 @@
 # node-bins
 Fast create  global commands by nodejs.🥰
 
-## sponsor
-[<img src="https://api.gitsponsors.com/api/badge/img?id=654400657" height="30">](https://api.gitsponsors.com/api/badge/link?p=AYPF49UXdqg3ZOP+yHaLLgxhbwtoP5vNlKYRDVXlCOWRap/4PwjSGNVFoiUuAAdlvYCvDqdPDB8esEb5gTD893Lly4fuBQskC2smhLEWAxXKyAPdRpHx9gwda6lypQNfHLoQs1Cp0sI42au6I0tw9A==)
 
 ## How to use
 
